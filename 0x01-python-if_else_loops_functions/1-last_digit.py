@@ -7,6 +7,6 @@ if ld > 5:
           .format(number, ld))
 elif ld is 0:
     print("Last digit of {:d} is {:d} and is 0".format(number, ld))
-elif ld < 6 and number != 0:
+elif ld < 6 and ld != 0:
     print("Last digit of {:d} is {:d} and is less than 6 and not 0"
           .format(number, ld))
