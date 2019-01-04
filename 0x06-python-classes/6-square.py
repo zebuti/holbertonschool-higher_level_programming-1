@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 class Square:
     def __init__(self, size=0, position=(0, 0)):
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     # Size property
     @property
@@ -18,7 +18,7 @@ class Square:
             raise ValueError('size must be >= 0')
         else:
             self.__size = value
-    
+
     # Position property
     @property
     def position(self):
@@ -27,12 +27,13 @@ class Square:
     # Position setter modifies
     @position.setter
     def position(self, value):
+        message = 'position must be a tuple of 2 positive integers'
         if type(value) != tuple or len(value) != 2:
-            raise TypeError('position must be a tuple of 2 positive integers')
+            raise TypeError(message)
 
         for items in value:
             if type(items) != int or items < 0:
-                raise TypeError('position must be a tuple of 2 positive integers')
+                raise TypeError(message)
 
         self.__position = value
 
@@ -42,8 +43,8 @@ class Square:
 
     def my_print(self):
         size = self.__size
-        nl = self.position[1]
-        ws = self.position[0]
+        nl = self.__position[1]
+        ws = self.__position[0]
 
         if size == 0:
             print()
