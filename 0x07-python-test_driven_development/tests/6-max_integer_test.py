@@ -4,6 +4,7 @@
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
     """tests for max_integer
     """
@@ -29,7 +30,8 @@ class TestMaxInteger(unittest.TestCase):
         """tests if list has a non int variable
         """
         test = ['h', 2, 3, 4]
-        with self.assertRaises(TypeError): max_integer(test)
+        with self.assertRaises(TypeError):
+            max_integer(test)
 
 if __name__ == '__main__':
     unittest.main()

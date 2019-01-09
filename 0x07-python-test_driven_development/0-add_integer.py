@@ -5,6 +5,7 @@ add_integer:
     Returns sum of parameters
 """
 
+
 def add_integer(a, b=98):
     """
     Checks if int, otherwise return sum
