@@ -8,21 +8,28 @@ class Rectangle:
     """
     Rectangle functions and data
     """
+
     # Public
     number_of_instances = 0
     print_symbol = "#"
 
     def __init__(self, width=0, height=0):
+        """ Instantiation
+        """
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
 
     @property
     def width(self):
+        """ Getter for width
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """ Setter for width
+        """
         if type(value) != int:
             raise TypeError("width must be an integer")
         if value < 0:
@@ -31,10 +38,14 @@ class Rectangle:
 
     @property
     def height(self):
+        """ Getter for height
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
+        """ Setter for height
+        """
         if type(value) != int:
             raise TypeError("width must be an integer")
         if value < 0:
@@ -43,9 +54,13 @@ class Rectangle:
 
     # Functions
     def area(self):
+        """ Returns area of rectangle
+        """
         return self.__width * self.__height
 
     def perimeter(self):
+        """ Returns perimeter of rectangle
+        """
         if self.__width == 0 or self.__height == 0:
             return 0
         else:
@@ -53,6 +68,8 @@ class Rectangle:
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
+        """ Returns whichever is bigger, rect_1 or rect_2
+        """
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
@@ -65,11 +82,15 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
+        """ Returns a square of the size
+        """
         height = size
         width = size
         return cls(height, width)
 
     def __str__(self):
+        """ print() __str__ method funtion to return rectangle in char '#'
+        """
         res = ""
         if self.__width == 0 or self.__height == 0:
             return res
@@ -82,6 +103,9 @@ class Rectangle:
         return res
 
     def __repr__(self):
+        """ print() or eval() __repr__ method function to return
+            ... Rectangle(width, height)
+        """
         w = str(self.__width)
         h = str(self.__height)
 
@@ -89,5 +113,8 @@ class Rectangle:
         return res
 
     def __del__(self):
+        """ Print a message for del
+            Decrement instance when del is called
+        """
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
