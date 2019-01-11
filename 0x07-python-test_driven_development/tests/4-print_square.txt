@@ -45,4 +45,3 @@ No input:
 
 Zero input:
     >>> print_square(0)
-    <BLANKLINE>
