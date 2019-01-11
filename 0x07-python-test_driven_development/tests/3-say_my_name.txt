@@ -35,3 +35,9 @@ No inputs:
     Traceback (most recent call last):
     ...
     TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Last name wrong input:
+    >>> say_my_name("Bob", 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
