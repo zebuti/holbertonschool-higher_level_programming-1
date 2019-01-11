@@ -4,9 +4,13 @@
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
     """tests for max_integer
     """
+
+    def unit_passer(self):
+        pass
 
     def max_int_basic(self):
         """tests normal list of ints
