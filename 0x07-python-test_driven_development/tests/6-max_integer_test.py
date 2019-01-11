@@ -8,30 +8,24 @@ max_integer = __import__('6-max_integer').max_integer
 class TestMaxInteger(unittest.TestCase):
     """tests for max_integer
     """
+
     def max_int_basic(self):
         """tests normal list of ints
         """
-        test = [1, 2, 3, 4]
-        self.assertEqual(max_integer(test), 4)
+        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
 
     def max_int_empty(self):
         """tests if list is empty
         """
-        test = []
-        self.assertEqual(max_integer(test), None)
+        self.assertEqual(max_integer([]), None)
 
     def max_int_neg(self):
         """tests if list has a negative int
         """
-        test = [-1, -2, -3, -4]
-        self.assertEqual(max_integer(test), -1)
+        self.assertEqual(max_integer([-1, -2, -3, -4]), -1)
 
-    def max_int_nonint(self):
-        """tests if list has a non int variable
-        """
-        test = ['h', 2, 3, 4]
-        with self.assertRaises(TypeError):
-            max_integer(test)
+    def max_int_one(self):
+        self.assertEqual(max_integer([1]), 1)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.TestMaxInteger()
