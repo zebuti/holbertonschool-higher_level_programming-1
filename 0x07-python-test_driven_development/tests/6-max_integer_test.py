@@ -25,6 +25,3 @@ class TestMaxInteger(unittest.TestCase):
 
     def max_int_one(self):
         self.assertEqual(max_integer([1]), 1)
-
-if __name__ == '__main__':
-    unittest.TestMaxInteger()
