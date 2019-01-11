@@ -55,3 +55,13 @@ Non string input:
 No special char in string input:
     >>> text_indentation("hello")
     hello
+
+QA case:
+    >>> text_indentation("Holberton. School? How are you: John")
+    Holberton.
+    <BLANKLINE>
+    School?
+    <BLANKLINE>
+    How are you:
+    <BLANKLINE>
+    John
