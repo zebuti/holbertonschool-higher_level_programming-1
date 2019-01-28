@@ -7,9 +7,16 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase(unittest.TestCase):
     """Testing Base
     """
+
+    def tearDown(self):
+        """Tears down obj count
+        """
+        Base._Base__nb_objects = 0
+        self.assertEqual(Base._Base__nb_objects, 0)
 
     def test_instance(self):
         """Test instantiation
@@ -23,17 +30,17 @@ class TestBase(unittest.TestCase):
         o6 = Base(["list", 4, 2.5])
         o7 = Base(None)
 
-        # self.assertEqual(o1.id, 4)
-        # self.assertEqual(Base._Base__nb_objects, 5)
+        self.assertEqual(o1.id, 1)
         self.assertEqual(o2.id, 9)
         self.assertEqual(o3.id, 9.5)
         self.assertEqual(o4.id, float('inf'))
         self.assertEqual(o5.id, "string")
         self.assertEqual(o6.id, ["list", 4, 2.5])
-        # self.assertEqual(o7.id, 5)
+        self.assertEqual(o7.id, 2)
+        self.assertEqual(Base._Base__nb_objects, 2)
 
     def test_to_json_string(self):
-        """Testing to_json_string
+        """Testing to_json_string()
         """
 
         o1_1 = [{"hi": 1, "yo": "hol"}]
@@ -44,7 +51,8 @@ class TestBase(unittest.TestCase):
         o1_6 = [[1, 2, 3]]
         o1_7 = []
 
-        self.assertCountEqual(Base.to_json_string(o1_1), '[{"hi": 1, "yo": "hol"}]')
+        self.assertCountEqual(Base.to_json_string(o1_1),
+                              '[{"hi": 1, "yo": "hol"}]')
         self.assertCountEqual(Base.to_json_string(o1_2), '[{"hello": 3}]')
         self.assertCountEqual(Base.to_json_string(o1_3), '[]')
         self.assertCountEqual(Base.to_json_string(o1_4), '"a string"')
@@ -54,7 +62,7 @@ class TestBase(unittest.TestCase):
         self.assertCountEqual(Base.to_json_string(o1_7), '[]')
 
     def test_from_json_string(self):
-        """Testing from_json_string, uses to_json_string to format,
+        """Testing from_json_string(), uses to_json_string to format,
         anything not in format should return []
         """
 
@@ -84,7 +92,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.from_json_string(o2_7), [])
 
     def test_create(self):
-        """Testing create
+        """Testing create()
         """
 
         o3_1 = {'id': 1, 'width': 1, 'height': 2, 'x': 2, 'y': 2}
@@ -102,7 +110,7 @@ class TestBase(unittest.TestCase):
             s3_2 = Square.create(**o3_3)
 
     def test_save_to_file(self):
-        """Testing save_to_file
+        """Testing save_to_file()
         """
 
         o4_1 = Rectangle(10, 7, 2, 8)
@@ -117,7 +125,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(os.path.isfile('Square.json'))
 
     def test_load_from_file(self):
-        """Testing load_from_file
+        """Testing load_from_file()
         """
 
         o5_1 = Rectangle(10, 7, 2, 8)
@@ -136,10 +144,10 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(slist[0], Square)
         self.assertIsInstance(slist[1], Square)
 
-        self.assertEqual(rlist[0].__str__(), '[Rectangle] (6) 2/8 - 10/7')
-        self.assertEqual(rlist[1].__str__(), '[Rectangle] (7) 0/0 - 2/4')
-        self.assertEqual(slist[0].__str__(), '[Square] (8) 7/2 - 10')
-        self.assertEqual(slist[1].__str__(), '[Square] (9) 0/0 - 8')
-        
+        self.assertEqual(rlist[0].__str__(), '[Rectangle] (1) 2/8 - 10/7')
+        self.assertEqual(rlist[1].__str__(), '[Rectangle] (2) 0/0 - 2/4')
+        self.assertEqual(slist[0].__str__(), '[Square] (3) 7/2 - 10')
+        self.assertEqual(slist[1].__str__(), '[Square] (4) 0/0 - 8')
+
 if __name__ == '__main__':
     unittest.main()
