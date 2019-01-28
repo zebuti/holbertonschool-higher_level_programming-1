@@ -97,7 +97,7 @@ class TestSquare(unittest.TestCase):
         o4 = Square(id="hello", size=3, x=1, y=0)
 
         o1.update(6, 1, 2, 8)
-        self.assertEqual(o1.__str__(), '[Square] (6) 8/0 - 1')
+        self.assertEqual(o1.__str__(), '[Square] (6) 2/8 - 1')
         o2.update(1, 2, 3, id="hello")
         self.assertEqual(o2.__str__(), '[Square] (hello) 2/0 - 3')
         with self.assertRaises(ValueError):
