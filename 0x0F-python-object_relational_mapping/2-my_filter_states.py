@@ -22,7 +22,7 @@ def filter_names():
 
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states WHERE BINARY name='{:s}'
+    cur.execute("SELECT * FROM states WHERE BINARY name='{:s}'\
                 ORDER BY id ASC".format(sys.argv[4]))
     rows = cur.fetchall()
     for i in rows:
