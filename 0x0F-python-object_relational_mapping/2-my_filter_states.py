@@ -3,6 +3,7 @@
 import MySQLdb
 import sys
 
+
 def filter_names():
     """Takes arguments argv to list from database
     Only lists with states that matches name argument
@@ -13,7 +14,6 @@ def filter_names():
         argv[3]: database name
         argv[4]: state name
     """
-    
     db = MySQLdb.connect(host="localhost",
                          port=3306,
                          user=sys.argv[1],
@@ -22,8 +22,8 @@ def filter_names():
 
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states WHERE BINARY name = '{:s}' ORDER BY id ASC"
-                .format(sys.argv[4]))
+    cur.execute("SELECT * FROM states WHERE BINARY name='{:s}'
+                ORDER BY id ASC".format(sys.argv[4]))
     rows = cur.fetchall()
     for i in rows:
         print(i)

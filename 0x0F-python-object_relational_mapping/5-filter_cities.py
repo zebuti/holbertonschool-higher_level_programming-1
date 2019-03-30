@@ -3,6 +3,7 @@
 import MySQLdb
 import sys
 
+
 def list_cities():
     """Takes arguments argv to list from database
     Only lists with states that matches name argument
