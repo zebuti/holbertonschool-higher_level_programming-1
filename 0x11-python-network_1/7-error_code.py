@@ -8,9 +8,10 @@ def errorcode():
     """status"""
     result = requests.get(sys.argv[1])
     try:
-        print(result.content.decode("utf-8"))
         if result.status_code > 400:
             print("Error code: {}".format(result.status_code))
+        else:
+            print(result.content.decode("utf-8"))
     except KeyError:
         pass
 
