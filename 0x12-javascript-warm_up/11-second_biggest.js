@@ -1,7 +1,7 @@
 #!/usr/bin/node
 // JS Script
 
-function sortNumber(a, b) {
+function sortNumber (a, b) {
   return a - b;
 }
 let argsLen = process.argv.length;
