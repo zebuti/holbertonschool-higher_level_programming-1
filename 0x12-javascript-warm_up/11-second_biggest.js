@@ -14,5 +14,4 @@ if (argsLen === 2 || argsLen === 3) {
   }
   arr.sort(sortNumber);
   console.log(arr[arr.length - 2]);
-  console.log(arr)
 }
